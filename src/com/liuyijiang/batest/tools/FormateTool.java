@@ -34,7 +34,9 @@ public class FormateTool {
 	
 	public BigDecimal formaterMoney(BigDecimal money){
 		Formate moneyf = new Formate();
-		formate(0, money,moneyf);
+		if(!money.equals(new BigDecimal(0.0))){
+			formate(0, money,moneyf);	
+		}
 		return moneyf.getFormateData();
 	}
 	
