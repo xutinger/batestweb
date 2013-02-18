@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+				http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+				http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+	
+  
+    <context:component-scan base-package="com.liuyijiang.batest" />
+    
+   <bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:/base.properties</value>
+			</list>
+		</property>
+	</bean>
+   
+   
+   <bean id="taxmap" class="com.liuyijiang.batest.tools.MainTools">
+       <property name="taxMap">
+          <map>
+            <entry key="${ca}" value="${CA}" />
+            <entry key="${nj}" value="${NJ}" />
+          </map>
+       </property>
+       
+        <property name="notaxMap">
+          <map>
+            <entry key="${ca.free.food}" value="${tax.free}" />
+            <entry key="${nj.free.food}" value="${tax.free}" />
+            <entry key="${nj.free.clothes}" value="${tax.free}" />
+          </map>
+       </property>
+       
+    </bean>
+   
+</beans>
